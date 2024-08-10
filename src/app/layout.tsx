@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Navigation from "@/app/components/Navigation/Navigation";
+import {Container} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.css'
 
 export const metadata: Metadata = {
   title: "Traildiary"
@@ -12,7 +14,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+    <head>
+        <base href="/" />
+    </head>
+      <body>
+      <header>
+        <Navigation/>
+      </header>
+      <Container fluid>
+                {children}
+      </Container>
+
+      </body>
     </html>
   );
 }

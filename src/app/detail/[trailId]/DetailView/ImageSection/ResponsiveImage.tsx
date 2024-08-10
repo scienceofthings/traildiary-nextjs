@@ -1,5 +1,7 @@
 import React from 'react'
-import {ResponsiveImageSources} from "../../../redux/slices/trail";
+import {ResponsiveImageSources} from "@/app/api/fetchTrail";
+
+
 
 type ResponsiveImageProps = {
   image: ResponsiveImageSources

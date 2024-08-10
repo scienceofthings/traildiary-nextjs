@@ -1,4 +1,5 @@
-import {config} from "./config";
+'use client'
+import {config} from "@/app/api/config";
 
 type AuthenticationParameters = {
     username: string,
@@ -13,9 +14,16 @@ export const authenticate = async (url: string, {arg}: {arg: AuthenticationParam
         password: arg.password
     }
 
-    await fetch(url, {
+    const response = await fetch(url, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(credentials)
-    }).then(result => result.json())
+    })
+
+    if (response.ok) {
+        //cookies().set('user', 'authenticated')
+        return await response.json()
+    }
+
+
 }

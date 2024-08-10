@@ -1,15 +1,15 @@
 import React, {FunctionComponent} from 'react';
 import {Button, Col, Row} from "react-bootstrap";
-import DetailMap from "@/app/detail/DetailMap";
+import DetailMap from "@/app/detail/[trailId]/DetailView/DetailMap";
 import Headline from "@/app/components/Headline/Headline";
-import ImageSection from "@/app/detail/ImageSection";
 import {TrailDetail} from "@/app/api/fetchTrail";
+import {ImageSection} from "@/app/detail/[trailId]/DetailView/ImageSection";
 
-type DetailProps = {
+type DetailViewProps = {
     trailDetails: TrailDetail
 }
 
-const Detail: FunctionComponent<DetailProps> = ({trailDetails}) => {
+const DetailView: FunctionComponent<DetailViewProps> = ({trailDetails}) => {
     return (
         <>
             <Row>
@@ -20,7 +20,7 @@ const Detail: FunctionComponent<DetailProps> = ({trailDetails}) => {
             <Row>
                 <Col>
                     <a href={trailDetails.gpx_file_name} download>
-                        <Button>Download GPX</Button>
+                        <Button className={"mt-2"}>Download GPX</Button>
                     </a>
                 </Col>
             </Row>
@@ -31,14 +31,14 @@ const Detail: FunctionComponent<DetailProps> = ({trailDetails}) => {
             </Row>
             <Row>
                 <Col>
-                    <Headline>Beschreibung</Headline>
+                    <Headline as={"h2"}>Beschreibung</Headline>
                     <div dangerouslySetInnerHTML={{__html:  trailDetails.description}}></div>
                 </Col>
             </Row>
             {trailDetails.technique.length > 0 && (
                 <Row>
                     <Col>
-                        <Headline>Technik</Headline>
+                        <Headline as={"h2"}>Technik</Headline>
                         {trailDetails.technique}
                     </Col>
                 </Row>
@@ -46,7 +46,7 @@ const Detail: FunctionComponent<DetailProps> = ({trailDetails}) => {
             {trailDetails.todo.length > 0 && (
                 <Row>
                     <Col>
-                        <Headline>Todo</Headline>
+                        <Headline as={"h2"}>Todo</Headline>
                         {trailDetails.todo}
                     </Col>
                 </Row>
@@ -57,4 +57,4 @@ const Detail: FunctionComponent<DetailProps> = ({trailDetails}) => {
     )
 };
 
-export default Detail;
+export default DetailView;

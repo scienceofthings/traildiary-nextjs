@@ -1,7 +1,5 @@
 import {config} from "./config";
 import {Fetcher} from "swr";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 import {Region} from "@/app/api/fetchRegions";
 
 export type Trail = {

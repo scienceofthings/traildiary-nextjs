@@ -6,9 +6,10 @@ import styles from './login.module.scss'
 
 import {authenticate, getAuthenticationEndpoint} from "@/app/api/authenticate";
 import useSWRMutation from "swr/mutation";
-import Link from "next/link";
-import {redirect, useRouter} from "next/navigation";
-import {cookies} from "next/headers";
+
+import { useRouter} from "next/navigation";
+
+
 
 export default function Login() {
     const router = useRouter()

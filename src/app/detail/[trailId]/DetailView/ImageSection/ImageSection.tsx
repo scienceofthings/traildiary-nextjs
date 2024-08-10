@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { ResponsiveImageSources } from '../../../redux/slices/trail'
 import { Col, Modal, Row } from 'react-bootstrap'
-import styles from './Detail.module.scss'
 import ResponsiveImage from './ResponsiveImage'
+import {ResponsiveImageSources} from "@/app/api/fetchTrail";
 
 type ImageSectionProps = {
   images: ResponsiveImageSources[]
@@ -26,7 +25,6 @@ const ImageSection: React.FunctionComponent<ImageSectionProps> = ({
       <Modal
         show={imageModalIsShown}
         onHide={() => showImageModal(false)}
-        dialogClassName={styles.imageModal}
         size="lg"
       >
         <Modal.Header closeButton />

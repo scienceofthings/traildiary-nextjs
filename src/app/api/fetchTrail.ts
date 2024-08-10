@@ -1,12 +1,10 @@
-import {config} from "./config";
 import {Fetcher} from "swr";
 import {getTrailsEndpoint, Trail} from "@/app/api/fetchTrails";
-import {Region} from "@/app/api/fetchRegions";
 import {LatLngLiteral} from "leaflet";
 
 export type ResponsiveImageSources = [string, string, string]
 
-export const getTrailEndpoint = (trailId: number): string => (
+export const getTrailDetailEndpoint = (trailId: number): string => (
     `${getTrailsEndpoint()}${trailId}/`
 )
 
@@ -21,7 +19,7 @@ export type TrailDetail = Trail & {
     images: ResponsiveImageSources[]
 }
 
-export const fetchTrails: Fetcher<Trail, string> = async(url: string) => {
+export const fetchTrailDetails: Fetcher<TrailDetail, string> = async(url: string) => {
     const response = await fetch(url, {
             headers: { accept: 'application/json' },
             method: 'GET'

@@ -1,9 +1,9 @@
 import React from 'react';
-import {Trail} from "@/app/api/fetchTrail";
 import {Region} from "@/app/api/fetchRegions";
 import {Col, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import Headline from "@/app/components/Headline/Headline";
 import Link from "next/link";
+import {Trail} from "@/app/api/fetchTrails";
 
 type RegionProps = {
     trails: Trail[]
@@ -19,12 +19,9 @@ const Regions: React.FunctionComponent<RegionProps> = ({trails, regions}) => {
         <Row>
             <Col>
                 {regions.length === 0 ? (
-                    <Headline>Keine Region gefunden. </Headline>
+                    <Headline as={"h2"}>Keine Region gefunden. </Headline>
                 ) : (
                     <>
-                        <Headline>
-                            Alle Regionen
-                        </Headline>
                         <ListGroup>
                             {regions.map((region) => (
                                 <ListGroupItem key={region.id}>
@@ -35,13 +32,13 @@ const Regions: React.FunctionComponent<RegionProps> = ({trails, regions}) => {
                             ))}
                         </ListGroup>
                         {regions.map((region) => (
-                            <div className="pt-8" key={region.id}>
-                                <h2 id={`region${region.id}`}>{region.title}</h2>
+                            <div key={region.id}>
+                                <Headline as={"h2"} id={`region${region.id}`}>{region.title}</Headline>
                                 <ListGroup>
                                     {getTrailsForRegion(region.id).length === 0 && <ListGroupItem>Keine Trails für diese Region vorhanden.</ListGroupItem>}
                                     {getTrailsForRegion(region.id).map((trail) => (
                                         <ListGroupItem key={trail.id}>
-                                            <Link href={(`/trails/${trail.id}`)}>
+                                            <Link href={(`/detail/${trail.id}`)}>
                                                 {trail.title}
                                             </Link>
                                         </ListGroupItem>
