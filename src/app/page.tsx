@@ -1,13 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
-import dynamic from "next/dynamic";
+import MapViewOrchestration from "@/app/mapView";
 
-const RootPageContainer = dynamic(() => import('./RootPageContainer'), {
-  ssr: false,
-});
-
-export default function Home() {
-  return (
-      <RootPageContainer/>
-  );
+export default function Page() {
+    return (
+        <MapViewOrchestration />
+    )
 }

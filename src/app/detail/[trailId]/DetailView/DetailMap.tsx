@@ -1,3 +1,4 @@
+'use client'
 import React, {useState} from 'react'
 import {Polyline} from 'react-leaflet'
 import {TrailDetail} from "@/app/api/fetchTrail";

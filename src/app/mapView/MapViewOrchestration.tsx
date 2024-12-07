@@ -1,11 +1,17 @@
 'use client'
-import React from 'react';
 import useSWR from "swr";
 import {fetchTrails, getTrailsEndpoint} from "@/app/api/fetchTrails";
 import {Col, Row} from "react-bootstrap";
-import MapSearch from "@/app/mapView";
+import React from "react";
+import dynamic from "next/dynamic";
 
-const RootPageContainer = () => {
+const MapSearchWithNoSSR = dynamic(
+    () => import('./MapView/MapSearch'),
+    { ssr: false }
+)
+
+
+const MapViewOrchestration = () => {
     const { data: trails, error } = useSWR(getTrailsEndpoint(), (url) => fetchTrails(url))
 
     if (error !== undefined){
@@ -16,10 +22,10 @@ const RootPageContainer = () => {
         <Row>
             <Col>
                 <title>Traildiary: Nach Karte</title>
-                <MapSearch trails={trails}/>
+                <MapSearchWithNoSSR trails={trails}/>
             </Col>
         </Row>
     );
-};
 
-export default RootPageContainer;
+}
+export default MapViewOrchestration

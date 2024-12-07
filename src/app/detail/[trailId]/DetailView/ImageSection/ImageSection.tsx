@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { Col, Modal, Row } from 'react-bootstrap'
 import ResponsiveImage from './ResponsiveImage'

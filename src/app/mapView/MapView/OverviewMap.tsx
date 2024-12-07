@@ -1,3 +1,4 @@
+'use client'
 import React, {useCallback, useEffect, useState} from 'react'
 import { Marker, Popup } from 'react-leaflet'
 import L, {LatLngLiteral} from 'leaflet'

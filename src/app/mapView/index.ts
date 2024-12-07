@@ -1,1 +1,1 @@
-export {default } from './MapSearch';
+export {default } from './MapViewOrchestration';

@@ -8,4 +8,6 @@ module.exports = {
         ]
     },
     skipTrailingSlashRedirect: true,
+    // @todo Add strict mode again once https://github.com/PaulLeCam/react-leaflet/issues/1133 is resolved
+    reactStrictMode: false
 }
